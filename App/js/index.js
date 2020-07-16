@@ -23,6 +23,8 @@ xui.Class('App', 'xui.Module',{
             append(
                 xui.create("xui.APICaller")
                 .setHost(host,"api_1")
+                .setName("api_1")
+                .setQueryURL("https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=0xCC4304A31d09258b0029eA7FE63d032f52e44EFe&vs_currencies=usd&include_24hr_change=true")
                 .setResponseDataTarget([
                     {
                         "type":"alert",
@@ -30,7 +32,6 @@ xui.Class('App', 'xui.Module',{
                         "path":""
                     }
                 ])
-                .setQueryURL("https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=0xCC4304A31d09258b0029eA7FE63d032f52e44EFe&vs_currencies=usd&include_24hr_change=true")
             );
             
             append(
@@ -52,6 +53,32 @@ xui.Class('App', 'xui.Module',{
                 .setWidth("59.04761904761905em")
                 .setHeight("7.085714285714285em")
                 .setHtml("<pre style=\"box-sizing: inherit; font-family: &quot;Source Code Pro&quot;, monospace; margin-top: 0px; margin-bottom: 0px; overflow: auto; color: rgb(255, 255, 255); padding: 10px; white-space: pre-wrap; border-radius: 4px; background: rgb(65, 68, 78); font-weight: 600;\">https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=0xCC4304A31d09258b0029eA7FE63d032f52e44EFe&amp;vs_currencies=usd&amp;include_24hr_change=true</pre>")
+            );
+            
+            append(
+                xui.create("xui.UI.Link")
+                .setHost(host,"xui_ui_link1")
+                .setLeft("29.714285714285715em")
+                .setTop("11.428571428571429em")
+                .setWidth("21.63809523809524em")
+                .setHeight("5.79047619047619em")
+                .setCaption("Link")
+                .onClick([
+                    {
+                        "desc":"Action 1",
+                        "type":"other",
+                        "target":"url",
+                        "args":[
+                            "https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=0xCC4304A31d09258b0029eA7FE63d032f52e44EFe&vs_currencies=usd&include_24hr_change=true"
+                        ],
+                        "method":"readJSON",
+                        "onOK":1,
+                        "onKO":2,
+                        "okFlag":"_DI_succeed",
+                        "koFlag":"_DI_fail",
+                        "event":1
+                    }
+                ])
             );
             
             append(
