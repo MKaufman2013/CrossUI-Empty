@@ -23,8 +23,6 @@ xui.Class('App', 'xui.Module',{
             append(
                 xui.create("xui.APICaller")
                 .setHost(host,"api_1")
-                .setName("api_1")
-                .setQueryURL("https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=0xCC4304A31d09258b0029eA7FE63d032f52e44EFe&vs_currencies=usd&include_24hr_change=true")
                 .setResponseDataTarget([
                     {
                         "type":"alert",
@@ -32,6 +30,7 @@ xui.Class('App', 'xui.Module',{
                         "path":""
                     }
                 ])
+                .setQueryURL("https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=0xCC4304A31d09258b0029eA7FE63d032f52e44EFe&vs_currencies=usd&include_24hr_change=true")
             );
             
             append(
@@ -63,22 +62,25 @@ xui.Class('App', 'xui.Module',{
                 .setWidth("9.447619047619048em")
                 .setHeight("1.2190476190476192em")
                 .setCaption("Current SWAP Price")
-                .onClick([
-                    {
-                        "desc":"Action 1",
-                        "type":"other",
-                        "target":"url",
-                        "args":[
-                            "https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=0xCC4304A31d09258b0029eA7FE63d032f52e44EFe&vs_currencies=usd&include_24hr_change=true"
-                        ],
-                        "method":"readJSON",
-                        "onOK":1,
-                        "onKO":2,
-                        "okFlag":"_DI_succeed",
-                        "koFlag":"_DI_fail",
-                        "event":1
-                    }
-                ])
+                .onClick({
+                    "newbies":{
+                        "Nbbkgn1ix":"xui.UI.Span"
+                    },
+                    "actions":[
+                        {
+                            "desc":"Action 1",
+                            "type":"control",
+                            "target":"api_1",
+                            "args":[ ],
+                            "method":"invoke",
+                            "okFlag":"_DI_succeed",
+                            "koFlag":"_DI_fail",
+                            "event":1,
+                            "onOK":0,
+                            "onKO":1
+                        }
+                    ]
+                })
                 .setCustomStyle({
                     "KEY":{
                         "background-color":"#DA70D6"
