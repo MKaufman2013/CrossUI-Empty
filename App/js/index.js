@@ -60,9 +60,9 @@ xui.Class('App', 'xui.Module',{
                 .setHost(host,"xui_ui_link1")
                 .setLeft("29.714285714285715em")
                 .setTop("11.428571428571429em")
-                .setWidth("21.63809523809524em")
-                .setHeight("5.79047619047619em")
-                .setCaption("Link")
+                .setWidth("9.447619047619048em")
+                .setHeight("1.2190476190476192em")
+                .setCaption("Current SWAP Price")
                 .onClick([
                     {
                         "desc":"Action 1",
@@ -79,6 +79,11 @@ xui.Class('App', 'xui.Module',{
                         "event":1
                     }
                 ])
+                .setCustomStyle({
+                    "KEY":{
+                        "background-color":"#DA70D6"
+                    }
+                })
             );
             
             append(
